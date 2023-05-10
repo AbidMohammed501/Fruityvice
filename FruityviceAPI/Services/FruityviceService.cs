@@ -13,10 +13,7 @@ namespace FruityviceAPI.Services
     {
         private readonly HttpClient _httpClient;
 
-        public FruityviceService(IHttpClientFactory httpClientFactory)
-        {
-            _httpClient = httpClientFactory.CreateClient("url");
-        }
+        public FruityviceService(IHttpClientFactory httpClientFactory) => _httpClient = httpClientFactory.CreateClient();
 
         public async Task<IEnumerable<Fruits>> FruitsList()
         {

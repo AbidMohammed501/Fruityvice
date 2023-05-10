@@ -20,7 +20,9 @@ namespace FruityviceAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddHttpClient("url", c => c.BaseAddress = new Uri("https://www.fruityvice.com/api/"));
+            // Using the GetValue<type>(string key) method
+            var configValue = builder.Configuration.GetValue<string>("endpointurl");
+            builder.Services.AddHttpClient("url", c => c.BaseAddress = new Uri(configValue));
             builder.Services.AddSingleton<IFruityviceService, FruityviceService>();
 
             var app = builder.Build();
